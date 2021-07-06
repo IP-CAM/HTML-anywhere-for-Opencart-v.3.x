@@ -545,7 +545,11 @@ class ControllerProductProduct extends Controller {
                             if ($current_page_product_id[1] == $product_id) {
                                 $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
                                 $view = str_replace($snippet_txt, $html, $view);
+                            } else {
+                                $view = str_replace($snippet_txt, '', $view);
                             }
+                        } else {
+                            $view = str_replace($snippet_txt, '', $view);
                         }
                     }
                 }

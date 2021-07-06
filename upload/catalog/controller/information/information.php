@@ -96,7 +96,11 @@ class ControllerInformationInformation extends Controller {
                             if ($current_page_information_id[1] == $information_id) {
                                 $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
                                 $view = str_replace($snippet_txt, $html, $view);
+                            } else {
+                                $view = str_replace($snippet_txt, '', $view);
                             }
+                        } else {
+                            $view = str_replace($snippet_txt, '', $view);
                         }
                     }
                 }
