@@ -61,6 +61,7 @@ class ControllerExtensionModuleHTMLAnywhereNik extends Controller {
 			$data['action'] = $this->url->link('extension/module/html_anywhere_nik', 'user_token=' . $this->session->data['user_token'], true);
 		} else {
 			$data['action'] = $this->url->link('extension/module/html_anywhere_nik', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id'], true);
+            $data['module_shortcode'] = '[html_anywhere_nik-' . $this->request->get['module_id'] . ']';
 		}
 
 		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);

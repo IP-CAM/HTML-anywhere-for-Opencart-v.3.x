@@ -13,6 +13,7 @@ $_['text_all_information']  = 'Во всех статьях';
 $_['text_selected_page']    = 'На определенной странице';
 
 // Entry
+$_['entry_module_shortcode'] = 'Шорткод для отображения модуля';
 $_['entry_name']        = 'Название модуля';
 $_['entry_display_place']= 'Где отображать модуль';
 $_['entry_selected_page']= 'Ссылка на страницу';
