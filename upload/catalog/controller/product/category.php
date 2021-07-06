@@ -359,7 +359,7 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-            $view = $this->process_shortcodes($this->load->view('product/category', $data), $this->request->get['path'], );
+            $view = $this->process_shortcodes($this->load->view('product/category', $data), $this->request->get['path']);
 
 			$this->response->setOutput($view);
 		} else {
