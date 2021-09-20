@@ -11,6 +11,7 @@ $_['text_all_categories']   = 'Во всех категориях';
 $_['text_all_products']     = 'Во всех товарах';
 $_['text_all_information']  = 'Во всех статьях';
 $_['text_selected_page']    = 'На определенной странице';
+$_['text_shortcode_will_create'] = 'Шорткод для вставки появится после создания модуля';
 
 // Entry
 $_['entry_module_shortcode'] = 'Шорткод для отображения модуля';
