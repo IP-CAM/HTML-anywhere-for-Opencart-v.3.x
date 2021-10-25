@@ -535,22 +535,27 @@ class ControllerProductProduct extends Controller {
                 $match = explode('-', $match);
                 if (isset($match[0]) && $match[0] == 'html_anywhere_nik') {
                     $module = $this->model_setting_module->getModule($match[1]);
-                    if ($module['display_place'] == '3') {
-                        $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
-                        $view = str_replace($snippet_txt, $html, $view);
-                    } else if ($module['display_place'] == '5') {
-                        $is_this = strripos($module['selected_page'], 'product/product');
-                        if ($is_this) {
-                            $current_page_product_id = explode("product_id=", $module['selected_page']);
-                            if ($current_page_product_id[1] == $product_id) {
-                                $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
-                                $view = str_replace($snippet_txt, $html, $view);
+
+                    if ($module['status'] == '1') {
+                        if ($module['display_place'] == '3') {
+                            $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
+                            $view = str_replace($snippet_txt, $html, $view);
+                        } else if ($module['display_place'] == '5') {
+                            $is_this = strripos($module['selected_page'], 'product/product');
+                            if ($is_this) {
+                                $current_page_product_id = explode("product_id=", $module['selected_page']);
+                                if ($current_page_product_id[1] == $product_id) {
+                                    $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
+                                    $view = str_replace($snippet_txt, $html, $view);
+                                } else {
+                                    $view = str_replace($snippet_txt, '', $view);
+                                }
                             } else {
                                 $view = str_replace($snippet_txt, '', $view);
                             }
-                        } else {
-                            $view = str_replace($snippet_txt, '', $view);
                         }
+                    } else {
+                        $view = str_replace($snippet_txt, '', $view);
                     }
                 }
             }

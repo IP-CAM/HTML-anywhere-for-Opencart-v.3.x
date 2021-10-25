@@ -424,22 +424,27 @@ class ControllerProductCategory extends Controller {
                 $match = explode('-', $match);
                 if (isset($match[0]) && $match[0] == 'html_anywhere_nik') {
                     $module = $this->model_setting_module->getModule($match[1]);
-                    if ($module['display_place'] == '2') {
-                        $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
-                        $view = str_replace($snippet_txt, $html, $view);
-                    } else if ($module['display_place'] == '5') {
-                        $is_this = strripos($module['selected_page'], 'product/category');
-                        if ($is_this) {
-                            $current_page_category_id = explode("path=", $module['selected_page']);
-                            if ($current_page_category_id[1] == $path_id) {
-                                $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
-                                $view = str_replace($snippet_txt, $html, $view);
+
+                    if ($module['status'] == '1') {
+                        if ($module['display_place'] == '2') {
+                            $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
+                            $view = str_replace($snippet_txt, $html, $view);
+                        } else if ($module['display_place'] == '5') {
+                            $is_this = strripos($module['selected_page'], 'product/category');
+                            if ($is_this) {
+                                $current_page_category_id = explode("path=", $module['selected_page']);
+                                if ($current_page_category_id[1] == $path_id) {
+                                    $html = $this->load->controller('extension/module/html_anywhere_nik', $module);
+                                    $view = str_replace($snippet_txt, $html, $view);
+                                } else {
+                                    $view = str_replace($snippet_txt, '', $view);
+                                }
                             } else {
                                 $view = str_replace($snippet_txt, '', $view);
                             }
-                        } else {
-                            $view = str_replace($snippet_txt, '', $view);
                         }
+                    } else {
+                        $view = str_replace($snippet_txt, '', $view);
                     }
                 }
             }
